@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  settings-database:
+    container_name: settings-database
+    image: mysql:5.7
+    networks:
+      - settings-network
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: settings
+    volumes:
+      - ./.docker/data/mysql:/var/lib/mysql
+      - ./.docker/logs/mysql:/var/log/mysql
+    ports:
+      - 3306:3306
+
+networks:
+  settings-network:
