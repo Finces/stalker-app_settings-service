@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import { useContainer, useExpressServer } from 'routing-controllers';
 import Container, { Service } from 'typedi';
 import { appConfig } from './config/app.config';
+// import { PrismaClient } from '@prisma/client';
 
 @Service()
 export class App {
@@ -26,6 +27,9 @@ export class App {
         routePrefix: '/api',
       },
     );
+// 
+    // const prismaClient = new PrismaClient();
+    // Container.set(PrismaClient, prismaClient);
   }
 
   async start(): Promise<void> {
