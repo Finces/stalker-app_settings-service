@@ -3,6 +3,7 @@ import { useContainer, useExpressServer } from 'routing-controllers';
 import Container, { Service } from 'typedi';
 import { appConfig } from './config/app.config';
 import { PrismaClient } from '@prisma/client';
+import path from 'path';
 
 @Service()
 export class App {
@@ -18,7 +19,9 @@ export class App {
     useExpressServer(
       this.appInstance,
       {
-        controllers: [],
+        controllers: [
+          path.join(`${__dirname}/**/*.controller{.ts,.js}`)
+        ],
         middlewares: [],
         validation: true,
         classTransformer: true,
